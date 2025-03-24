@@ -1,8 +1,8 @@
-// /home/krylon/go/src/github.com/blicero/badnews/common/common.go
+// /home/krylon/go/src/github.com/blicero/randomland/common/common.go
 // -*- mode: go; coding: utf-8; -*-
 // Created on 18. 09. 2024 by Benjamin Walkenhorst
 // (c) 2024 Benjamin Walkenhorst
-// Time-stamp: <2025-03-24 12:07:37 krylon>
+// Time-stamp: <2025-03-24 13:30:14 krylon>
 
 package common
 
@@ -19,7 +19,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/blicero/krylisp/logdomain"
+	"github.com/blicero/randomland/logdomain"
 	"github.com/google/uuid"
 	"github.com/hashicorp/logutils"
 )
@@ -96,8 +96,10 @@ func SetLogLevel(lvl logutils.LogLevel) {
 // XfrDbgPath is the path of the folder where data on DNS zone transfers
 // are stored.
 var (
-	BaseDir = filepath.Join(os.Getenv("HOME"), fmt.Sprintf(".%s.d", strings.ToLower(AppName)))
-	LogPath = filepath.Join(BaseDir, fmt.Sprintf("%s.log", strings.ToLower(AppName)))
+	BaseDir   = filepath.Join(os.Getenv("HOME"), fmt.Sprintf(".%s.d", strings.ToLower(AppName)))
+	LogPath   = filepath.Join(BaseDir, fmt.Sprintf("%s.log", strings.ToLower(AppName)))
+	SavePath  = filepath.Join(BaseDir, "save")
+	WorldPath = filepath.Join(BaseDir, "worlds")
 )
 
 // SetBaseDir sets the BaseDir and related variables.
