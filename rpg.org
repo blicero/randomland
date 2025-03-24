@@ -1,5 +1,5 @@
 # -*- mode: org; fill-column: 78; -*-
-# Time-stamp: <2025-03-24 12:10:13 krylon>
+# Time-stamp: <2025-03-24 16:33:43 krylon>
 #
 #+TAGS: internals(i) ui(u) bug(b) feature(f)
 #+TAGS: design(e), meditation(m) plot(p)
@@ -27,6 +27,7 @@
    :END:
 *** Prompt / Shell [0/0]
     I found a library that seems to do what I want, [[https://github.com/c-bata/go-prompt][go-prompt]].
+*** Model [0/0]
 ** Bugs [0/0]
    :PROPERTIES:
    :COOKIE_DATA: todo recursive
