@@ -2,7 +2,7 @@
 // -*- mode: go; coding: utf-8; -*-
 // Created on 24. 03. 2025 by Benjamin Walkenhorst
 // (c) 2025 Benjamin Walkenhorst
-// Time-stamp: <2025-03-24 19:22:33 krylon>
+// Time-stamp: <2025-03-24 20:39:29 krylon>
 
 // Package model provides the data types to model the game and its world.
 package model
@@ -37,10 +37,27 @@ type Lifeform struct {
 	HP          int
 	MaxHP       int
 	XP          int
-	Inventory   map[string]*Item
+	Inventory   map[int64]*Item
 	Attack      int
 	Evade       int
 	Armor       int
 	Damage      Range
 	Initiative  Range
+}
+
+// Location represents a place in the game the player can travel to.
+type Location struct {
+	ID          int64
+	Name        string
+	Description string
+	Characters  map[int64]*Lifeform
+	Items       map[int64]*Item
+	Links       []int64
+}
+
+// World represents the totality of the world the game takes place in.
+type World struct {
+	Name      string
+	Locations map[int64]*Location
+	StartLoc  int64
 }
