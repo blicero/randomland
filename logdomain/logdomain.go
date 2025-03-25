@@ -2,7 +2,7 @@
 // -*- mode: go; coding: utf-8; -*-
 // Created on 21. 12. 2024 by Benjamin Walkenhorst
 // (c) 2024 Benjamin Walkenhorst
-// Time-stamp: <2025-03-24 12:08:44 krylon>
+// Time-stamp: <2025-03-25 16:58:50 krylon>
 
 package logdomain
 
@@ -12,10 +12,12 @@ type ID uint8
 
 const (
 	Engine ID = iota
+	Shell
 )
 
 func AllDomains() []ID {
 	return []ID{
 		Engine,
+		Shell,
 	}
 } // func AllDomains() []ID
