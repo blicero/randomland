@@ -1,5 +1,5 @@
 # -*- mode: org; fill-column: 78; -*-
-# Time-stamp: <2025-03-24 21:36:21 krylon>
+# Time-stamp: <2025-03-25 17:55:22 krylon>
 #
 #+TAGS: internals(i) ui(u) bug(b) feature(f)
 #+TAGS: design(e), meditation(m) plot(p)
@@ -16,14 +16,15 @@
   A disappointing attempt at a text-based role-playing game.
 ** Clocktable
    #+BEGIN: clocktable :scope file :maxlevel 255 :emphasize t
-   #+CAPTION: Clock summary at [2025-03-24 Mo 21:36]
-   | Headline               | Time   |        |      |
-   |------------------------+--------+--------+------|
-   | *Total time*           | *1:04* |        |      |
-   |------------------------+--------+--------+------|
-   | *RPG [0/0]*            | *1:04* |        |      |
-   | \_  /Components [0/0]/ |        | /1:04/ |      |
-   | \_    Model [0/0]      |        |        | 1:04 |
+   #+CAPTION: Clock summary at [2025-03-25 Di 17:55]
+   | Headline                   | Time   |        |      |
+   |----------------------------+--------+--------+------|
+   | *Total time*               | *2:31* |        |      |
+   |----------------------------+--------+--------+------|
+   | *RPG [0/0]*                | *2:31* |        |      |
+   | \_  /Components [0/0]/     |        | /2:31/ |      |
+   | \_    Prompt / Shell [0/0] |        |        | 1:00 |
+   | \_    Model [0/0]          |        |        | 1:31 |
    #+END:
 ** Features [0/0]
    :PROPERTIES:
@@ -40,6 +41,9 @@
     :COOKIE_DATA: todo recursive
     :VISIBILITY: children
     :END:
+    :LOGBOOK:
+    CLOCK: [2025-03-25 Di 16:15]--[2025-03-25 Di 17:15] =>  1:00
+    :END:
     I found a library that seems to do what I want, [[https://github.com/c-bata/go-prompt][go-prompt]].
 *** Model [0/0]
     :PROPERTIES:
@@ -47,6 +51,8 @@
     :VISIBILITY: children
     :END:
     :LOGBOOK:
+    CLOCK: [2025-03-25 Di 15:51]--[2025-03-25 Di 16:15] =>  0:24
+    CLOCK: [2025-03-25 Di 14:58]--[2025-03-25 Di 15:01] =>  0:03
     CLOCK: [2025-03-24 Mo 20:32]--[2025-03-24 Mo 21:36] =>  1:04
     :END:
 ** Bugs [0/0]
