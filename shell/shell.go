@@ -2,7 +2,7 @@
 // -*- mode: go; coding: utf-8; -*-
 // Created on 25. 03. 2025 by Benjamin Walkenhorst
 // (c) 2025 Benjamin Walkenhorst
-// Time-stamp: <2025-03-25 17:02:29 krylon>
+// Time-stamp: <2025-03-25 17:05:40 krylon>
 
 // Package shell provides the text-based user interface.
 package shell
@@ -26,15 +26,18 @@ var commands = []prompt.Suggest{
 	{Text: "quit", Description: "Quit"},
 }
 
-func makeCompleter(sugg []prompt.Suggest) func(d prompt.Document) []prompt.Suggest {
+type completer func(d prompt.Document) []prompt.Suggest
+
+func makeCompleter(sugg []prompt.Suggest) completer {
 	return func(d prompt.Document) []prompt.Suggest {
 		return prompt.FilterHasPrefix(sugg, d.GetWordBeforeCursor(), true)
 	}
-} // func makeCompleter(sugg []prompt.Suggest) func(d prompt.Document) []prompt.Suggest
+} // func makeCompleter(sugg []prompt.Suggest) completer
 
 // Shell provides a text-based interface to the user.
 type Shell struct {
-	log *log.Logger
+	log  *log.Logger
+	cmpl completer
 }
 
 // New creates a new Shell
@@ -48,9 +51,12 @@ func New() (*Shell, error) {
 		return nil, err
 	}
 
+	s.cmpl = makeCompleter(commands)
+
 	return s, nil
 } // func New() (*Shell, error)
 
+// Run executes the Shell's main loop
 func (s *Shell) Run() error {
 	return krylib.ErrNotImplemented
 }
