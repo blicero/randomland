@@ -2,7 +2,7 @@
 // -*- mode: go; coding: utf-8; -*-
 // Created on 24. 03. 2025 by Benjamin Walkenhorst
 // (c) 2025 Benjamin Walkenhorst
-// Time-stamp: <2025-03-24 20:39:29 krylon>
+// Time-stamp: <2025-03-25 15:53:59 krylon>
 
 // Package model provides the data types to model the game and its world.
 package model
@@ -18,6 +18,23 @@ type Range struct {
 func (r *Range) Rand() int {
 	return rand.IntN(r.Hi-r.Lo) - r.Lo
 } // func (r *Range) Rand() int
+
+// Flag represents an aspect of the state of the world.
+type Flag struct {
+	ID          int64
+	Name        string
+	Description string
+	state       bool
+}
+
+// Set "raises" the flag.
+func (f *Flag) Set() { f.state = true }
+
+// Clear "lowers" the flag.
+func (f *Flag) Clear() { f.state = false }
+
+// State returns the current state of the flag.
+func (f *Flag) State() bool { return f.state }
 
 // Item is an object the player can interact with and or take.
 type Item struct {
