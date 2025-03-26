@@ -1,8 +1,8 @@
-// /home/krylon/go/src/github.com/blicero/krylisp/logdomain/logdomain.go
+// /home/krylon/go/src/github.com/blicero/randomland/logdomain/logdomain.go
 // -*- mode: go; coding: utf-8; -*-
 // Created on 21. 12. 2024 by Benjamin Walkenhorst
 // (c) 2024 Benjamin Walkenhorst
-// Time-stamp: <2025-03-25 16:58:50 krylon>
+// Time-stamp: <2025-03-26 16:27:00 krylon>
 
 package logdomain
 

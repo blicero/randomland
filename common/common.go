@@ -2,7 +2,7 @@
 // -*- mode: go; coding: utf-8; -*-
 // Created on 18. 09. 2024 by Benjamin Walkenhorst
 // (c) 2024 Benjamin Walkenhorst
-// Time-stamp: <2025-03-24 13:30:14 krylon>
+// Time-stamp: <2025-03-26 16:21:44 krylon>
 
 package common
 
@@ -75,6 +75,8 @@ func init() {
 	}
 } // func init()
 
+// SetLogLevel sets the log level for newly created Loggers.
+// Existing loggers are not affected, obviously.
 func SetLogLevel(lvl logutils.LogLevel) {
 	if slices.Index(LogLevels, lvl) == -1 {
 		fmt.Fprintf(
