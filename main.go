@@ -2,7 +2,7 @@
 // -*- mode: go; coding: utf-8; -*-
 // Created on 26. 03. 2025 by Benjamin Walkenhorst
 // (c) 2025 Benjamin Walkenhorst
-// Time-stamp: <2025-03-26 16:15:47 krylon>
+// Time-stamp: <2025-03-26 18:19:03 krylon>
 
 package main
 
@@ -12,6 +12,8 @@ import (
 
 	"github.com/blicero/randomland/common"
 	"github.com/blicero/randomland/shell"
+
+	_ "github.com/blicero/krylib" // To keep the dependency for the build script
 )
 
 func main() {

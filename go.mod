@@ -3,6 +3,7 @@ module github.com/blicero/randomland
 go 1.24.0
 
 require (
+	github.com/anmitsu/go-shlex v0.0.0-20200514113438-38f4b401e2be
 	github.com/blicero/krylib v0.2.1
 	github.com/c-bata/go-prompt v0.2.6
 	github.com/google/uuid v1.6.0
