@@ -2,7 +2,7 @@
 // -*- mode: go; coding: utf-8; -*-
 // Created on 01. 02. 2021 by Benjamin Walkenhorst
 // (c) 2021 Benjamin Walkenhorst
-// Time-stamp: <2025-03-25 15:56:33 krylon>
+// Time-stamp: <2025-03-26 16:34:40 krylon>
 
 //go:build ignore
 // +build ignore
@@ -34,7 +34,7 @@ import (
 )
 
 const (
-	appName     = "randomlang"
+	appName     = "randomland"
 	logFile     = "./dbg.build.log"
 	lintCommand = "mygolint"
 	nilaway     = "nilaway"
@@ -63,8 +63,8 @@ var orderedSteps = []string{
 
 var candidates = map[string][]string{
 	"generate": {
-		"common",
 		"logdomain",
+		"common",
 	},
 	"test": {
 		"common",
@@ -399,6 +399,10 @@ func worker(n int, op string, pkgq <-chan string, errq chan<- error, wg *sync.Wa
 		} else if op == "nilaway" {
 			cmd = exec.Command(nilaway, pkg)
 		} else {
+			dbg.Printf("[TRACE] Worker #%d: Execute go %s -v %s\n",
+				n,
+				op,
+				pkg)
 			cmd = exec.Command("go", op, "-v", pkg)
 		}
 
