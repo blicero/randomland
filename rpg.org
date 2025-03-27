@@ -1,5 +1,5 @@
 # -*- mode: org; fill-column: 78; -*-
-# Time-stamp: <2025-03-26 18:50:14 krylon>
+# Time-stamp: <2025-03-27 22:08:18 krylon>
 #
 #+TAGS: internals(i) ui(u) bug(b) feature(f)
 #+TAGS: design(e), meditation(m) plot(p)
@@ -8,7 +8,7 @@
 #+TODO: MEDITATE(m) PLANNING(p) | SUSPENDED(s)
 #+PRIORITIES: A G D
 
-* RPG [0/0]
+* RPG [0/1]
   :PROPERTIES:
   :COOKIE_DATA: todo recursive
   :VISIBILITY: children
@@ -16,22 +16,23 @@
   A disappointing attempt at a text-based role-playing game.
 ** Clocktable
    #+BEGIN: clocktable :scope file :maxlevel 255 :emphasize t
-   #+CAPTION: Clock summary at [2025-03-26 Mi 18:50]
-   | Headline                   | Time   |        |      |
-   |----------------------------+--------+--------+------|
-   | *Total time*               | *4:19* |        |      |
-   |----------------------------+--------+--------+------|
-   | *RPG [0/0]*                | *4:19* |        |      |
-   | \_  /Components [0/0]/     |        | /4:19/ |      |
-   | \_    Prompt / Shell [0/0] |        |        | 2:48 |
-   | \_    Model [0/0]          |        |        | 1:31 |
+   #+CAPTION: Clock summary at [2025-03-27 Do 22:08]
+   | Headline                   | Time   |        |      |      |
+   |----------------------------+--------+--------+------+------|
+   | *Total time*               | *6:37* |        |      |      |
+   |----------------------------+--------+--------+------+------|
+   | *RPG [0/0]*                | *6:37* |        |      |      |
+   | \_  /Components [0/0]/     |        | /6:37/ |      |      |
+   | \_    Prompt / Shell [0/0] |        |        | 4:17 |      |
+   | \_    Model [0/1]          |        |        | 2:20 |      |
+   | \_      Sample world       |        |        |      | 0:49 |
    #+END:
 ** Features [0/0]
    :PROPERTIES:
    :COOKIE_DATA: todo recursive
    :VISIBILITY: children
    :END:
-** Components [0/0]
+** Components [0/1]
    :PROPERTIES:
    :COOKIE_DATA: todo recursive
    :VISIBILITY: children
@@ -42,12 +43,13 @@
     :VISIBILITY: children
     :END:
     :LOGBOOK:
+    CLOCK: [2025-03-27 Do 15:27]--[2025-03-27 Do 16:56] =>  1:29
     CLOCK: [2025-03-26 Mi 17:26]--[2025-03-26 Mi 18:50] =>  1:24
     CLOCK: [2025-03-26 Mi 16:12]--[2025-03-26 Mi 16:36] =>  0:24
     CLOCK: [2025-03-25 Di 16:15]--[2025-03-25 Di 17:15] =>  1:00
     :END:
     I found a library that seems to do what I want, [[https://github.com/c-bata/go-prompt][go-prompt]].
-*** Model [0/0]
+*** Model [0/1]
     :PROPERTIES:
     :COOKIE_DATA: todo recursive
     :VISIBILITY: children
@@ -57,6 +59,12 @@
     CLOCK: [2025-03-25 Di 14:58]--[2025-03-25 Di 15:01] =>  0:03
     CLOCK: [2025-03-24 Mo 20:32]--[2025-03-24 Mo 21:36] =>  1:04
     :END:
+**** TODO Sample world
+     :LOGBOOK:
+     CLOCK: [2025-03-27 Do 17:56]--[2025-03-27 Do 18:45] =>  0:49
+     :END:
+     I need to create a simple demo world, so I can test the game mechanics
+     and such.
 ** Bugs [0/0]
    :PROPERTIES:
    :COOKIE_DATA: todo recursive
