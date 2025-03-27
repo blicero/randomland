@@ -2,7 +2,7 @@
 // -*- mode: go; coding: utf-8; -*-
 // Created on 25. 03. 2025 by Benjamin Walkenhorst
 // (c) 2025 Benjamin Walkenhorst
-// Time-stamp: <2025-03-26 18:24:09 krylon>
+// Time-stamp: <2025-03-27 15:47:49 krylon>
 
 // Package shell provides the text-based user interface.
 package shell
@@ -13,6 +13,7 @@ import (
 	"os"
 
 	"github.com/anmitsu/go-shlex"
+	"github.com/blicero/krylib"
 	"github.com/blicero/randomland/common"
 	"github.com/blicero/randomland/logdomain"
 	"github.com/c-bata/go-prompt"
@@ -38,12 +39,15 @@ func makeCompleter(sugg []prompt.Suggest) func(d prompt.Document) []prompt.Sugge
 	}
 } // func makeCompleter(sugg []prompt.Suggest) completer
 
+type shellCmd func(cmd []string) error
+
 // Shell provides a text-based interface to the user.
 type Shell struct {
 	log    *log.Logger
 	cmpl   func(d prompt.Document) []prompt.Suggest
 	prompt *prompt.Prompt
-	cmdmap map[string]bool
+	cmdmap map[string]shellCmd
+	round  int
 }
 
 // New creates a new Shell
@@ -58,10 +62,14 @@ func New() (*Shell, error) {
 	}
 
 	s.cmpl = makeCompleter(commands)
-	s.cmdmap = make(map[string]bool, len(commands))
-
-	for _, c := range commands {
-		s.cmdmap[c.Text] = true
+	s.cmdmap = map[string]shellCmd{
+		"attack": s.doAttack,
+		"go":     s.doGo,
+		"look":   s.doLook,
+		"take":   s.doTake,
+		"load":   s.doLoad,
+		"save":   s.doSave,
+		"quit":   s.doQuit,
 	}
 
 	s.prompt = prompt.New(
@@ -69,6 +77,8 @@ func New() (*Shell, error) {
 		s.cmpl,
 		prompt.OptionPrefix(prefix),
 	)
+
+	s.round++
 
 	return s, nil
 } // func New() (*Shell, error)
@@ -96,9 +106,10 @@ func (s *Shell) executor(in string) {
 		in)
 
 	var (
-		err    error
-		pieces []string
-		ok     bool
+		err     error
+		handler shellCmd
+		pieces  []string
+		ok      bool
 	)
 
 	if pieces, err = shlex.Split(in, false); err != nil {
@@ -107,17 +118,42 @@ func (s *Shell) executor(in string) {
 			err.Error())
 	}
 
-	if ok = s.cmdmap[pieces[0]]; !ok {
+	if handler, ok = s.cmdmap[pieces[0]]; !ok {
 		fmt.Printf("Unknown command: %s\n", pieces[0])
 		return
-	}
-
-	switch pieces[0] {
-	case "quit":
-		s.log.Println("[INFO] Bye bye")
-		os.Exit(0)
-	default:
-		s.log.Printf("[ERROR] Command %q is not implemented, yet.\n",
-			pieces[0])
+	} else if err = handler(pieces); err != nil {
+		s.log.Printf("[ERROR] Error handling %s: %s\n",
+			pieces[0],
+			err.Error())
 	}
 } // func (s *Shell) executor(in string)
+
+func (s *Shell) doAttack(cmd []string) error {
+	return krylib.ErrNotImplemented
+} // func (s *Shell) doAttack(cmd []string) error
+
+func (s *Shell) doGo(cmd []string) error {
+	return krylib.ErrNotImplemented
+} // func (s *Shell) doGo(cmd []string) error
+
+func (s *Shell) doLook(cmd []string) error {
+	return krylib.ErrNotImplemented
+} // func (s *Shell) doLook(cmd []string) error
+
+func (s *Shell) doTake(cmd []string) error {
+	return krylib.ErrNotImplemented
+} // func (s *Shell) doTake(cmd []string) error
+
+func (s *Shell) doSave(cmd []string) error {
+	return krylib.ErrNotImplemented
+} // func (s *Shell) doSave(cmd []string) error
+
+func (s *Shell) doLoad(cmd []string) error {
+	return krylib.ErrNotImplemented
+} // func (s *Shell) doLoad(cmd []string) error
+
+func (s *Shell) doQuit(cmd []string) error {
+	fmt.Println("So long, and thanks for all the random numbers!")
+	os.Exit(0)
+	return nil // The linter barked at the missing return value. *shrug*
+} // func (s *Shell) doQuit(cmd []string) error
